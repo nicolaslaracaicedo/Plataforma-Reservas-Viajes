@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block title %}Ingresar Hotel - Reservas de Viajes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Ingresar Nuevo Hotel</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('main.ingresar_hotel') }}">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-hotel"></i> Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del hotel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location"><i class="fas fa-map-marker-alt"></i> Ubicación</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="Ubicación del hotel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price_per_night"><i class="fas fa-dollar-sign"></i> Precio por Noche</label>
+                            <input type="number" step="0.01" min="0" class="form-control" id="price_per_night" name="price_per_night" placeholder="Precio por noche" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="available"><i class="fas fa-check"></i> Disponibilidad</label>
+                            <select class="form-control" id="available" name="available" required>
+                                <option value="True">Sí</option>
+                                <option value="False">No</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Hotel</button>
+                            <a href="{{ url_for('main.buscar_hoteles') }}" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Volver a Buscar Hoteles</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

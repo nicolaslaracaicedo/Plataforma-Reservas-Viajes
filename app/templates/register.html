@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registrarse
+{% endblock %}
+
+{% block content %}
+    <style>
+        /* Estilos adicionales para las tarjetas (cards) */
+        .card {
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+
+        .card-header, .card-footer {
+            background-color: #f8f9fa; /* Color de fondo */
+            border-radius: 15px 15px 0 0; /* Bordes redondeados en la parte superior */
+        }
+
+        .card-body {
+            background-color: #ffffff; /* Color de fondo */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 0 0 15px 15px; /* Bordes redondeados en la parte inferior */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Color de fondo */
+            border-color: #007bff; /* Color del borde */
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+        }
+
+        .input-group-text {
+            background-color: #f8f9fa; /* Color de fondo */
+            border: none; /* Sin borde */
+        }
+
+        .form-control {
+            border-left: none; /* Sin borde a la izquierda */
+            border-radius: 0 0.25rem 0.25rem 0; /* Bordes redondeados a la derecha */
+        }
+
+        /* Ajustes específicos para mejorar la visibilidad del texto */
+        .card-header h3 {
+            color: #6c5ce7; /* Color del título */
+        }
+
+        .card-footer a {
+            color: #6c5ce7; /* Color del enlace */
+        }
+
+        .card-footer a:hover {
+            text-decoration: none; /* Quitar subrayado al pasar el mouse */
+        }
+
+        /* Eliminar la transformación (movimiento) al hacer hover */
+        .card:hover {
+            transform: none !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Mantenemos la sombra al hacer hover */
+        }
+    </style>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card border-0 rounded-lg mt-5">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-4"><i class="fas fa-user-plus"></i> Registrarse</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('main.register') }}">
+                            <div class="form-group">
+                                <label class="small mb-1" for="name">Nombre</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input class="form-control py-4" id="name" name="name" type="text" placeholder="Ingresa tu nombre" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="email">Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    <input class="form-control py-4" id="email" name="email" type="email" placeholder="Ingresa tu correo electrónico" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="password">Contraseña</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    </div>
+                                    <input class="form-control py-4" id="password" name="password" type="password" placeholder="Ingresa tu contraseña" required />
+                                </div>
+                            </div>
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> Registrarse</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="small"><a href="{{ url_for('main.login') }}"><i class="fas fa-sign-in-alt"></i> ¿Ya tienes una cuenta? Inicia sesión aquí.</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

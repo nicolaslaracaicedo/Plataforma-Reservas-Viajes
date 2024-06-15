@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block content %}
+    <!-- Sección de Ofertas Destacadas -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Ofertas Destacadas</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card card-hover">
+                        <img src="{{ url_for('static', filename='imagen-oferta1.jpg') }}" class="card-img-top" alt="Oferta 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Oferta Especial en Vuelos</h5>
+                            <p class="card-text">¡Reserva ahora y ahorra hasta un 30% en tu próximo vuelo!</p>
+                            <a href="{{ url_for('main.buscar_vuelos') }}" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card card-hover">
+                        <img src="{{ url_for('static', filename='imagen-oferta2.jpg') }}" class="card-img-top" alt="Oferta 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Descuentos en Hoteles</h5>
+                            <p class="card-text">Disfruta de descuentos exclusivos en los mejores hoteles.</p>
+                            <a href="{{ url_for('main.buscar_hoteles') }}" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card card-hover">
+                        <img src="{{ url_for('static', filename='imagen-oferta3.jpg') }}" class="card-img-top" alt="Oferta 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Alquiler de Coches</h5>
+                            <p class="card-text">Encuentra ofertas especiales en alquiler de coches.</p>
+                            <a href="{{ url_for('main.buscar_coches') }}" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información sobre el Sitio -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">¿Por qué elegirnos?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-plane fa-3x mb-3"></i>
+                        <h4>Vuelos Flexibles</h4>
+                        <p>Ofrecemos una amplia selección de vuelos con opciones flexibles de horario y destinos.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-hotel fa-3x mb-3"></i>
+                        <h4>Hoteles de Calidad</h4>
+                        <p>Trabajamos con los mejores hoteles para garantizar una estancia cómoda y placentera.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-car fa-3x mb-3"></i>
+                        <h4>Alquiler de Coches</h4>
+                        <p>Encuentra el coche perfecto para tu viaje con nuestras opciones de alquiler flexibles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios de Clientes -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Lo que nuestros clientes dicen</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"¡El mejor servicio de reservas de viajes que he encontrado! Rápido, fácil y confiable."</p>
+                            <p class="card-text"><strong>John Doe</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"Excelente atención al cliente y grandes ofertas. ¡Muy recomendado!"</p>
+                            <p class="card-text"><strong>Jane Smith</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Reserva -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Reserva tu Viaje</h2>
+            <form action="{{ url_for('main.reservar') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="tipo_reserva">Tipo de Reserva</label>
+                        <select class="form-control" id="tipo_reserva" name="tipo_reserva">
+                            <option value="vuelo">Vuelo</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="coche">Coche</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_inicio">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_fin">Fecha de Fin</label>
+                        <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="destino">Destino</label>
+                        <input type="text" class="form-control" id="destino" name="destino" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="num_personas">Número de Personas</label>
+                        <input type="number" class="form-control" id="num_personas" name="num_personas" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="preferencias">Preferencias</label>
+                        <input type="text" class="form-control" id="preferencias" name="preferencias">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Reservar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

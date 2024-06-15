@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  configsvr:
+    image: mongo:latest
+    command: mongod --configsvr --replSet configRS --bind_ip_all
+    ports:
+      - "27021:27019"
+
+  shard1:
+    image: mongo:latest
+    command: mongod --shardsvr --replSet shard1RS --bind_ip_all
+    ports:
+      - "27022:27018"  # Cambia el puerto externo a 27022
+
+  mongos:
+    image: mongo:latest
+    command: mongos --configdb configRS/configsvr:27019 --bind_ip_all
+    ports:
+      - "27016:27016"

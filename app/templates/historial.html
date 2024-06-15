@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Historial de Reservas
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Historial de Reservas</h1>
+        <form method="GET" action="{{ url_for('main.historial') }}">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ver Historial</button>
+        </form>
+        {% if reservations %}
+            <h2 class="mt-5">Reservas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Vuelo</th>
+                        <th>Hotel</th>
+                        <th>Coche</th>
+                        <th>Fecha de Reserva</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.flight_id }}</td>
+                            <td>{{ reservation.hotel_id }}</td>
+                            <td>{{ reservation.car_id }}</td>
+                            <td>{{ reservation.reservation_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
